@@ -17,19 +17,19 @@ document.addEventListener('keydown', event => {
     switch (event.keyCode) {
         case 37:
             game.movePieceLeft();
-            view.render(game.getState());
+            view.renderMainScreen(game.getState());
             break;
         case 38:
             game.rotatePiece();
-            view.render(game.getState());
+            view.renderMainScreen(game.getState());
             break;
         case 39:
             game.movePieceRight();
-            view.render(game.getState());
+            view.renderMainScreen(game.getState());
             break;
         case 40:
             game.movePieceDown();
-            view.render(game.getState());
+            view.renderMainScreen(game.getState());
             break;
     }
 });
