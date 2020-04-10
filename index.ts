@@ -1,35 +1,18 @@
 import Game from "./src/game";
 import View from "./src/view";
+import Controller from "./src/controller";
 
 declare global {
-    interface Window { game: any; view: any; }
+    interface Window { game: Game; view: View; controller: Controller;}
 }
 
 const root = document.querySelector('#root');
 
 const game = new Game();
 const view = new View(root, 480, 640, 20, 10);
+const controller = new Controller(game, view);
 
 window.game = game;
 window.view = view;
+window.controller = controller;
 
-document.addEventListener('keydown', event => {
-    switch (event.keyCode) {
-        case 37:
-            game.movePieceLeft();
-            view.renderMainScreen(game.getState());
-            break;
-        case 38:
-            game.rotatePiece();
-            view.renderMainScreen(game.getState());
-            break;
-        case 39:
-            game.movePieceRight();
-            view.renderMainScreen(game.getState());
-            break;
-        case 40:
-            game.movePieceDown();
-            view.renderMainScreen(game.getState());
-            break;
-    }
-});
